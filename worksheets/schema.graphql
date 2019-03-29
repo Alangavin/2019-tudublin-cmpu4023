@@ -1,0 +1,54 @@
+type Query {
+  
+  
+  products(prod_id: Int!): Products
+
+  inventory : Inventory
+
+  category:[Category!]
+ 
+}
+
+type Mutation {
+createProduct(title: String!, prod_id: Int!,
+              actor: String, 
+              price: Float): Products
+
+category( desc: String): Category
+
+}
+ 
+type Products {
+  id: ID! 
+  prod_id:Int!  
+  category: [Category!]
+  title: String!
+  actor: String
+  price: Float
+  special: Int
+}
+
+type Reorder {
+  id: ID! 
+  prod_id:Int!
+  date_low: DateTime
+  quan_low: DateTime
+  quan_reordered:Int
+  date_expected: DateTime
+}
+
+type Inventory {
+  id: ID! 
+  prod_id:Int!
+  quan_in_stock: Int
+  sales: Int
+}
+
+
+type Category {
+  id: ID! 
+  desc: String
+  
+}
+
+scalar DateTime
